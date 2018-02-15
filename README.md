@@ -6,6 +6,7 @@ Prácticas de Desarrollo de Sistemas Distribuidos (DSD), Grado en Ingeniería In
 
 ## Práctica 1: Programación de un DNS con RPC (Remote Procedure Call)
 
+[!alt](https://github.com/danidiaz1/DSD-Desarrollo-de-Sistemas-Distribuidos-UGR/tree/master/P1_RPC/doc "Figura 1")
 Esta práctica consiste en, utilizando rpcgen, programar una simplificación de un servicio DNS, el cual es un servicio jerárquico organizado en base a subredes para resolver la obtención de la dirección IP de un equipo a partir de su nombre, independientemente de la subred donde se encuentre el equipo.
 
 Cada subred dispone de un servidor DNS que consiste en un servicio básico de registro de nombres de equipos y sus correspondientes IPs, los equipos pertenecen a dicha subred (véase la figura anterior). En el caso de subredes situadas en los nodos hoja de la jerarquía, dicho servidor conoce y registra la dirección del servidor superior en la jerarquía al que tiene que consultar en caso de que no pueda resolver la obtención de la IP de un equipo que no pertenezca a su subred. En el caso de que una subred sea intermedia en la jerarquía, además de la dirección del servidor superior en la jerarquía, dicho servidor también conoce y registra las direcciones de los servidores de cada una de las subredes que son nodos inferiores en la jerarquía.
