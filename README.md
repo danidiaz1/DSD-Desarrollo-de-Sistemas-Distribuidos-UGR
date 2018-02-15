@@ -30,6 +30,6 @@ Funcionamiento:
 
 Poner en marcha los ejecutables de los servidores y usar el cliente de la siguiente manera:
 
-Para REGISTRAR un equipo, usar: ./client [direccion] registrar [nombre_dns_sin_subred] [ip]
-Para ELIMINAR un equipo, usar: ./client [direccion] borrar [nombre_dns_con_subred]
-Para RESOLVER un equipo, usar: ./client [direccion] resolver [nombre_dns_con_subred]
+- Para REGISTRAR un equipo, usar: ./client [direccion] registrar [nombre_dns_sin_subred] [ip]
+- Para ELIMINAR un equipo, usar: ./client [direccion] borrar [nombre_dns_con_subred]
+- Para RESOLVER un equipo, usar: ./client [direccion] resolver [nombre_dns_con_subred]
