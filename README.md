@@ -65,28 +65,21 @@ El **servidor** proporcionaría el formulario/página comentado en el punto ante
 
 ### Instrucciones para la instalación/ejecución
 	
-	- Instalar socket.io y mongodb en el directorio donde se hayan extraido los archivos.
-	- Abrir una consola en el directorio donde se hayan extraido los archivos.
-	- Ejecutar con: 
-      nodejs servidor.js
-      el servidor escucha en el puerto 8080
-	- Abrir un navegador con las siguientes páginas: 
+- Instalar socket.io y mongodb en el directorio donde se hayan extraido los archivos.
+- Abrir una consola en el directorio donde se hayan extraido los archivos.
+- Ejecutar con: ":$ nodejs servidor.js", el servidor escucha en el puerto 8080
+- Abrir un navegador con las siguientes páginas: 
 		localhost:8080/sensores.html 
 		localhost:8080/agente.html
 		localhost:8080
-	- Interactuar con sensores.html y con cliente.html (página por defecto)
+- Interactuar con sensores.html y con cliente.html (página por defecto)
 
 ### Funcionamiento:
 
-	- servidor.js: Lo primero que hace el servidor es dar como página por defecto "cliente.html".
-		Este servidor guarda los estados de la persiana y el ac, por defecto ambos activos.
-		Se conecta a la base de datos mongodb y se pone a escuchar en el puerto 8080.
-		Una vez hecho esto, socket.io empieza a escuchar en dicho servidor.
+- servidor.js: Lo primero que hace el servidor es dar como página por defecto "cliente.html". Este servidor guarda los estados de la persiana y el ac, por defecto ambos activos. Se conecta a la base de datos mongodb y se pone a escuchar en el puerto 8080. Una vez hecho esto, socket.io empieza a escuchar en dicho servidor. A partir de aquí, se crea la estructura de suscripción y envío de eventos. Todos los eventos se producirán en "connection". Existen eventos para cuando los sensores publican datos, para obtener los últimos datos registrados de la base de datos, para obtener los estados de la persiana o del ac, etc.
 
-		A partir de aquí, se crea la estructura de suscripción y envío de eventos. Todos los eventos se producirán en "connection". Existen eventos para cuando los sensores publican datos, para obtener los últimos datos registrados de la base de datos, para obtener los estados de la persiana o del ac, etc.
+- sensores.html: Página con un formulario que simula el envío de datos de los sensores.
 
-	- sensores.html: Página con un formulario que simula el envío de datos de los sensores.
+- cliente.html: Al entrar en esta página por primera vez, se muestra el último dato que tiene el servidor de los sensores. Se muestra, además, el estado de la persiana y el ac, con botones para cambiarlos. Por último, muestra las alertas cuando suceden por la acción del agente. Cuando se produce un cambio en la temperatura o luminosidad, se muestran automáticamente.
 
-	- cliente.html: Al entrar en esta página por primera vez, se muestra el último dato que tiene el servidor de los sensores. Se muestra, además, el estado de la persiana y el ac, con botones para cambiarlos. Por último, muestra las alertas cuando suceden por la acción del agente. Cuando se produce un cambio en la temperatura o luminosidad, se muestran automáticamente.
-
-	- agente.html: Página "vacía", que solo incluye el script para enviar alertas al servidor (tal y como está descrito en el dibujo del funcionamiento de la aplicación) cuando los sensores superan ciertos valores (25 para temperatura y 30 para luminosidad). Luego, el servidor se encarga de propagar la alerta a los clientes. Cuando se superen estos valores, el agente cierra la persiana.
+- agente.html: Página "vacía", que solo incluye el script para enviar alertas al servidor (tal y como está descrito en el dibujo del funcionamiento de la aplicación) cuando los sensores superan ciertos valores (25 para temperatura y 30 para luminosidad). Luego, el servidor se encarga de propagar la alerta a los clientes. Cuando se superen estos valores, el agente cierra la persiana.
