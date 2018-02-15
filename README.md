@@ -53,7 +53,9 @@ El ejercicio consiste en desarrollar en RMI un sistema cliente-servidor teniendo
 
 ## Práctica 3: Sistema domótico con Node.js, socketIO y mongoDB
 
-Se supone un sistema domótico básico compuesto de dos sensores (luminosidad y temperatura), dos actuadores (motor persiana y sistema de Aire/Acondicionado), un servidor que sirve páginas para mostrar el estado y actuar sobre los elementos de la vivienda (véase la figura anterior). Además dicho servidor incluye un agente capaz de notificar alarmas y tomar decisiones básicas. El sistema se comporta como se describe a continuacióon:
+![alt text](https://github.com/danidiaz1/DSD-Desarrollo-de-Sistemas-Distribuidos-UGR/blob/master/P3_Nodejs/doc/figura1.png "Figura 1")
+
+Se supone un sistema domótico básico compuesto de dos sensores (luminosidad y temperatura), dos actuadores (motor persiana y sistema de Aire/Acondicionado), un servidor que sirve páginas para mostrar el estado y actuar sobre los elementos de la vivienda (véase la figura anterior). Además dicho servidor incluye un agente capaz de notificar alarmas y tomar decisiones básicas. El sistema se comporta como se describe a continuación:
 
 - Los **sensores** difunden información acerca de las medidas tomadas a través del servidor. Dichas medidas serían simuladas y proporcionadas mediante un formulario de entrada que proporcionara el servidor para poder incluir las medidas de ambos sensores. La introducción en el formulario de una nueva medida en cualquiera de los sensores conllevará la publicación del correspondiente evento que incluiría dicha medida. La misma página mostraría los cambios que se produzcan en el estado de los actuadores.
 
