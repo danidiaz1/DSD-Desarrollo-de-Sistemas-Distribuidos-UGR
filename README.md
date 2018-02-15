@@ -33,3 +33,20 @@ Poner en marcha los ejecutables de los servidores y usar el cliente de la siguie
 - Para REGISTRAR un equipo, usar: ./client [direccion] registrar [nombre_dns_sin_subred] [ip]
 - Para ELIMINAR un equipo, usar: ./client [direccion] borrar [nombre_dns_con_subred]
 - Para RESOLVER un equipo, usar: ./client [direccion] resolver [nombre_dns_con_subred]
+
+
+## Práctica 2: Servidor de donaciones con RMI
+
+El ejercicio consiste en desarrollar en RMI un sistema cliente-servidor teniendo en cuenta los siguientes requisitos:
+
+1. El servidor será un servidor replicado (con exactamente 2 replicas), cada replica desplegada en una máquina diferente, y estará encargado de recibir donaciones de entidades (clientes) para una causa humanitaria.
+
+2. El servidor proporcionará dos operaciones, registro de una entidad interesada (cliente) en la causa, y depósito de una donación a la causa. No es posible realizar un depósito (o más) sin haberse registrado el cliente previamente.
+
+3. Cuando una entidad desea registrarse y contacta con cualquiera de las dos réplicas del servidor, entonces el registro del cliente debe ocurrir realmente y de forma transparente en la réplica con menos entidades registradas. Es decir, el cliente sólo se ha dirigido a una réplica aunque esta no haya sido donde realmente ha quedado registrado, pero a partir de ese momento, el cliente realizará los depósitos en la réplica del servidor donde ha sido registrado.
+
+4. Cada réplica del servidor mantendrá el subtotal de las donaciones realizadas en dicha replica.
+
+5. Un cliente no podrá registrarse más de una vez, ni siquiera en replicas distintas.
+
+6. Los servidores también ofrecerán una operación de consulta del total donado en un momento dado. Dicha operación sólo podrá llevarse a cabo si el cliente previamente se ha registrado y ha realizado al menos un depósito. Cuando un cliente consulte la cantidad total donada hasta el momento, sólo hará la petición a la réplica donde se encuentra registrado, y ésta será la encargada, realizando la operación oportuna con la otra replica, de devolver el total donado hasta el momento.
