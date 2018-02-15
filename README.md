@@ -68,7 +68,7 @@ Se supone un sistema domótico básico compuesto de dos sensores (luminosidad y 
 - Instalar socket.io y mongodb en el directorio donde se hayan extraido los archivos.
 - Abrir una consola en el directorio donde se hayan extraido los archivos.
 - Ejecutar con: ":$ nodejs servidor.js", el servidor escucha en el puerto 8080
-Markup: * Abrir un navegador con las siguientes páginas: 
+* Abrir un navegador con las siguientes páginas: 
 	* localhost:8080/sensores.html 
 	* localhost:8080/agente.html
 	* localhost:8080
