@@ -50,3 +50,41 @@ El ejercicio consiste en desarrollar en RMI un sistema cliente-servidor teniendo
 5. Un cliente no podrá registrarse más de una vez, ni siquiera en replicas distintas.
 
 6. Los servidores también ofrecerán una operación de consulta del total donado en un momento dado. Dicha operación sólo podrá llevarse a cabo si el cliente previamente se ha registrado y ha realizado al menos un depósito. Cuando un cliente consulte la cantidad total donada hasta el momento, sólo hará la petición a la réplica donde se encuentra registrado, y ésta será la encargada, realizando la operación oportuna con la otra replica, de devolver el total donado hasta el momento.
+
+## Práctica 3: Sistema domótico con Node.js, socketIO y mongoDB
+
+Se supone un sistema domótico básico compuesto de dos sensores (luminosidad y temperatura), dos actuadores (motor persiana y sistema de Aire/Acondicionado), un servidor que sirve páginas para mostrar el estado y actuar sobre los elementos de la vivienda (véase la figura anterior). Además dicho servidor incluye un agente capaz de notificar alarmas y tomar decisiones básicas. El sistema se comporta como se describe a continuacióon:
+
+- Los **sensores** difunden información acerca de las medidas tomadas a través del servidor. Dichas medidas serían simuladas y proporcionadas mediante un formulario de entrada que proporcionara el servidor para poder incluir las medidas de ambos sensores. La introducción en el formulario de una nueva medida en cualquiera de los sensores conllevará la publicación del correspondiente evento que incluiría dicha medida. La misma página mostraría los cambios que se produzcan en el estado de los actuadores.
+
+El **servidor** proporcionaría el formulario/página comentado en el punto anterior y la página a la que accedería el usuario tal como se comenta en el punto siguiente. Además mantendría las subscriciones, de los usuarios que se encuentren accediendo al sistema y del agente, a los eventos relacionados con luminosidad y temperatura. Y por último, guardaría un histórico de los eventos (cambios en las medidas) producidos en el sistema en una base de datos con la correspondiente marca de tiempo asociada a cada evento.
+
+- Cada **usuario** accedería al estado del sistema a través del servidor mostrando la información en la correspondiente página que este enviaría. Dicha página mostraría las nuevas medidas que generen los sensores cuando estas se produzcan. Además el usuario podría abrir/cerrar la persiana, y/o encender/apagar el sistema de A/C en cualquier momento.
+
+### Instrucciones para la instalación/ejecución
+	
+	- Instalar socket.io y mongodb en el directorio donde se hayan extraido los archivos.
+	- Abrir una consola en el directorio donde se hayan extraido los archivos.
+	- Ejecutar con: 
+      nodejs servidor.js
+      el servidor escucha en el puerto 8080
+	- Abrir un navegador con las siguientes páginas: 
+		localhost:8080/sensores.html 
+		localhost:8080/agente.html
+		localhost:8080
+	- Interactuar con sensores.html y con cliente.html (página por defecto)
+
+### Funcionamiento:
+
+	- servidor.js: Lo primero que hace el servidor es dar como página por defecto "cliente.html".
+		Este servidor guarda los estados de la persiana y el ac, por defecto ambos activos.
+		Se conecta a la base de datos mongodb y se pone a escuchar en el puerto 8080.
+		Una vez hecho esto, socket.io empieza a escuchar en dicho servidor.
+
+		A partir de aquí, se crea la estructura de suscripción y envío de eventos. Todos los eventos se producirán en "connection". Existen eventos para cuando los sensores publican datos, para obtener los últimos datos registrados de la base de datos, para obtener los estados de la persiana o del ac, etc.
+
+	- sensores.html: Página con un formulario que simula el envío de datos de los sensores.
+
+	- cliente.html: Al entrar en esta página por primera vez, se muestra el último dato que tiene el servidor de los sensores. Se muestra, además, el estado de la persiana y el ac, con botones para cambiarlos. Por último, muestra las alertas cuando suceden por la acción del agente. Cuando se produce un cambio en la temperatura o luminosidad, se muestran automáticamente.
+
+	- agente.html: Página "vacía", que solo incluye el script para enviar alertas al servidor (tal y como está descrito en el dibujo del funcionamiento de la aplicación) cuando los sensores superan ciertos valores (25 para temperatura y 30 para luminosidad). Luego, el servidor se encarga de propagar la alerta a los clientes. Cuando se superen estos valores, el agente cierra la persiana.
