@@ -57,9 +57,9 @@ El ejercicio consiste en desarrollar en RMI un sistema cliente-servidor teniendo
 
 Se supone un sistema domótico básico compuesto de dos sensores (luminosidad y temperatura), dos actuadores (motor persiana y sistema de Aire/Acondicionado), un servidor que sirve páginas para mostrar el estado y actuar sobre los elementos de la vivienda (véase la figura anterior). Además dicho servidor incluye un agente capaz de notificar alarmas y tomar decisiones básicas. El sistema se comporta como se describe a continuación:
 
-- Los **sensores** difunden información acerca de las medidas tomadas a través del servidor. Dichas medidas serían simuladas y proporcionadas mediante un formulario de entrada que proporcionara el servidor para poder incluir las medidas de ambos sensores. La introducción en el formulario de una nueva medida en cualquiera de los sensores conllevará la publicación del correspondiente evento que incluiría dicha medida. La misma página mostraría los cambios que se produzcan en el estado de los actuadores.
+- Los **sensores** difunden información acerca de las medidas tomadas a través del servidor. Dichas medidas serían simuladas y proporcionadas mediante un formulario de entrada que proporcionaría el servidor para poder incluir las medidas de ambos sensores. La introducción en el formulario de una nueva medida en cualquiera de los sensores conllevará la publicación del correspondiente evento que incluiría dicha medida. La misma página mostraría los cambios que se produzcan en el estado de los actuadores.
 
-El **servidor** proporcionaría el formulario/página comentado en el punto anterior y la página a la que accedería el usuario tal como se comenta en el punto siguiente. Además mantendría las subscriciones, de los usuarios que se encuentren accediendo al sistema y del agente, a los eventos relacionados con luminosidad y temperatura. Y por último, guardaría un histórico de los eventos (cambios en las medidas) producidos en el sistema en una base de datos con la correspondiente marca de tiempo asociada a cada evento.
+- El **servidor** proporcionaría el formulario/página comentado en el punto anterior y la página a la que accedería el usuario tal como se comenta en el punto siguiente. Además mantendría las subscriciones, de los usuarios que se encuentren accediendo al sistema y del agente, a los eventos relacionados con luminosidad y temperatura. Y por último, guardaría un histórico de los eventos (cambios en las medidas) producidos en el sistema en una base de datos con la correspondiente marca de tiempo asociada a cada evento.
 
 - Cada **usuario** accedería al estado del sistema a través del servidor mostrando la información en la correspondiente página que este enviaría. Dicha página mostraría las nuevas medidas que generen los sensores cuando estas se produzcan. Además el usuario podría abrir/cerrar la persiana, y/o encender/apagar el sistema de A/C en cualquier momento.
 
@@ -68,10 +68,10 @@ El **servidor** proporcionaría el formulario/página comentado en el punto ante
 - Instalar socket.io y mongodb en el directorio donde se hayan extraido los archivos.
 - Abrir una consola en el directorio donde se hayan extraido los archivos.
 - Ejecutar con: ":$ nodejs servidor.js", el servidor escucha en el puerto 8080
-- Abrir un navegador con las siguientes páginas: 
-		localhost:8080/sensores.html 
-		localhost:8080/agente.html
-		localhost:8080
+Markup: * Abrir un navegador con las siguientes páginas: 
+	* localhost:8080/sensores.html 
+	* localhost:8080/agente.html
+	* localhost:8080
 - Interactuar con sensores.html y con cliente.html (página por defecto)
 
 ### Funcionamiento:
