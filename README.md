@@ -17,3 +17,19 @@ Ello permite que una petición recibida desde un servidor inferior en la jerarqu
 Se tiene en cuenta que cuando un servidor DNS tiene que resolver la obtención de IP de un equipo que no pertenece a su subred, el mismo servidor es el responsable de transmitir petición al DNS siguiente en la jerarquía, y así sucesivamente hasta que la petición alcance al DNS que mantiene la información. 
 
 Cada servidor DNS también tendrá registradas de la forma más conveniente las direcciones de los servidores DNS con los que conecta directamente en la jerarquía.
+
+#### Instrucciones.
+
+Compilar:
+
+- Cliente: make -f cliente.mak
+- DNS2: make -f Makefile.dns2
+- DNS1: make -f Makefile.dns
+
+Funcionamiento: 
+
+Poner en marcha los ejecutables de los servidores y usar el cliente de la siguiente manera:
+
+Para REGISTRAR un equipo, usar: ./client [direccion] registrar [nombre_dns_sin_subred] [ip]
+Para ELIMINAR un equipo, usar: ./client [direccion] borrar [nombre_dns_con_subred]
+Para RESOLVER un equipo, usar: ./client [direccion] resolver [nombre_dns_con_subred]
